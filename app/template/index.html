@@ -1,0 +1,84 @@
+
+<!---Initialize Home Page--->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../static/styles/style.css">
+    </head>
+    <body>
+        <!---Initialize structure of Title and house picture--->
+        <div class = "title">
+            <h1>Cap Town House Price Predictor</h1>
+            <!--<img src="static/img/ddebb9c351b2c807a285f0d90381672e-house-black-icon.png" class="house"/>-->
+        </div>
+        <!---Containerize main page for styling--->
+        <div class = "page">
+            <!---Containerize paragraph and form for styling--->
+            <div class = "container">
+                <div class = "intro">
+                    <b>
+                        <p class = "Note"><b>Note: Enter values which are reasonable to the context</b></p>
+                    </b>
+                </div>
+                <br>
+                <!---Initialize form structure and inputs, set method to "POST"--->
+                <form action = "{{url_for('predict')}}" method = "post" class = "info">
+                    <p>Bathrooms</p>
+                    <input type="number" id="bathrooms" name="Number of Bathrooms" min="1" max="15" placeholder="Number of Bathrooms"/><span style="color:red" required="required"> * </span>
+                    <br>
+                    <br>
+                    <p>Bedrooms</p>
+                    <input type="number" id="bedrooms" name="Number of Bedrooms" min="1" max="15" placeholder="Number of Bedrooms"/><span style="color:red" required="required"> * </span>
+                    <br>
+                    <br>
+                    <p>Erf size</p>
+                    <input type="number" id="erf" name="Size of the Erf" min="30" max="14000" placeholder="Erf size in m²" required="required"/><span style="color:red"> * </span>
+                    <br>
+                    <br>
+                    <p>Floor Size</p>
+                    <input type="number" id="floor" name="Size of the floor" min="20" max="1000" placeholder="floor size in m²" required="required"/><span style="color:red"> * </span>
+                    <br>
+                    <br>
+                    <p>Garages</p>
+                    <input type="number" id="garages" name="Number of garages" min="0" max="20"placeholder="Number of Garages" required="required"/><span style="color:red"> * </span>
+                    <br>
+                    <br>
+                    <p>Is it Pet friendly?</p>
+                    <input type="number" id="pet" name="Pet friendly" min="0" max="1" placeholder="0 for No, 1 for yes"/><span style="color:red" required="required"> * </span>
+                    <br>
+                    <br>
+                    <p>Type of Proprety:</p>
+                    <input type="radio" id="flat" name="Proprety" value="Apartment / Flat" >
+                        <label for="Apartment / Flat">Apartment / Flat</label><br>
+                    <input type="radio" id="house" name="Proprety" value="House" checked="checked">
+                        <label for="House">House</label><br>
+                    <input type="radio" id="town" name="Proprety" value="Townhouse">
+                    <label for="Townhouse">Townhouse</label>
+                    <!--<input type="text" name="Proprety" id="proprety" placeholder="Apartment / Flat or House or Townhouse"><span style="color:red" required="required"> * </span>-->
+                    <br>
+                    <br>
+                    <p>Is there a garden?</p>
+                    <input type="number" id="garden" name="Garden" min="0" max="1" placeholder="0 for No, 1 for yes"/><span style="color:red" required="required"> * </span>
+                    <br>
+                    <br>
+                    <p>Is there a pool?</p>
+                    <input type="number" id="pool" name="Pool" min="0" max="1" placeholder="0 for No, 1 for yes"/><span style="color:red" required="required"> * </span>
+                    <br>
+                    <br>
+                    <p>Paking</p>
+                    <input type="number" id="parking" name="Number of parking" min="0" max="13"placeholder="Number of parking" required="required"/><span style="color:red"> * </span>
+                    <br>
+                    <br>
+                    <button type="submit" class="btn">Predict</button>
+                </form>
+                <br> 
+                <!---Set placeholder for prediction output--->
+                <div class ="pred">
+                    <p class = "result"><b>{{ prediction_text }}</b></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
